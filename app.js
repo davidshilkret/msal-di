@@ -75,6 +75,7 @@ tenantUrl = localStorage.getItem("msal-tenantUrl");
 
                 });
     }
+    //
     function acquireTokenPopupAndCallSPO() {
         console.log("Calling acquireTokenPopupAndCallSPO ....");
         //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
