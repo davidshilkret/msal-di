@@ -1,4 +1,4 @@
-MSAL.js
+//MSAL.js
 /*! msal v1.0.0 2019-05-04 */
 'use strict';
 (function webpackUniversalModuleDefinition(root, factory) {
