@@ -101,6 +101,7 @@ tenantUrl = localStorage.getItem("msal-tenantUrl");
     }
 
     function acquireTokenPopupAndCallMSGraph() {
+        debugger;
         //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
         myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
             callMSGraph(graphConfig.graphMeEndpoint, tokenResponse.accessToken, graphAPICallback);
