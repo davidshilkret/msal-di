@@ -40,6 +40,7 @@ var tenantUrl = "https://dtecho365.onmicrosoft.com";
     myMSALObj.handleRedirectCallback(authRedirectCallBack);
 
     function signIn() {
+        debugger;
         myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
             //Successful login
             showWelcomeMessage();
@@ -78,6 +79,7 @@ var tenantUrl = "https://dtecho365.onmicrosoft.com";
     }
     
     function acquireTokenPopupAndCallSPO() {
+        debugger;
         console.log("Calling acquireTokenPopupAndCallSPO ....");
         //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
         myMSALObj.acquireTokenSilent(SPORequestObj).then(function (tokenResponse) {
@@ -178,6 +180,7 @@ var tenantUrl = "https://dtecho365.onmicrosoft.com";
 
    //This function can be removed if you do not need to support IE
    function acquireTokenRedirectAndCallMSGraph() {
+    debugger;
         //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
         myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
             callMSGraph(graphConfig.graphMeEndpoint, tokenResponse.accessToken, graphAPICallback);
