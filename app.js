@@ -1,6 +1,7 @@
 //Multi Tenant Multi Resource Authentication with MSAL JS
 
-tenantUrl = localStorage.getItem("msal-tenantUrl");
+//tenantUrl = localStorage.getItem("msal-tenantUrl");
+var tenantUrl = "https://dtecho365.onmicrosoft.com";
      msalConfig = {
         auth: {
             clientId: '9624a483-5297-45f7-91da-a8ec0e75798b', //This is your client ID
