@@ -93,6 +93,8 @@ var tenantUrl = "https://dtecho365.onmicrosoft.com";
                 alert("Require interaction");
                 myMSALObj.acquireTokenPopup(SPORequestObj).then(function (tokenResponse) {
                    // callMSGraph(graphConfig.graphMeEndpoint, tokenResponse.accessToken, graphAPICallback);
+                   localStorage.setItem("accessTokenFromATP", tokenResponse.accessToken);
+
                    CallSPORequest(tokenResponse);
                 }).catch(function (error) {
                     console.log(error);
@@ -105,6 +107,8 @@ var tenantUrl = "https://dtecho365.onmicrosoft.com";
         debugger;
         //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
         myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
+            localStorage.setItem("accessTokenFromATPCG", tokenResponse.accessToken);
+
             callMSGraph(graphConfig.graphMeEndpoint, tokenResponse.accessToken, graphAPICallback);
 
              //If we have tenantUrl already Skip the graph call
@@ -179,6 +183,7 @@ var tenantUrl = "https://dtecho365.onmicrosoft.com";
             callMSGraph(graphConfig.graphMeEndpoint, tokenResponse.accessToken, graphAPICallback);
              //If we have tenantUrl already Skip the graph call
              if (!tenantUrl) {
+                localStorage.setItem("accessTokenFromATS", tokenResponse.accessToken);
                         fetch("https://graph.microsoft.com/v1.0/sites/root", {
                                 headers: {
                                     Authorization: "Bearer " + tokenResponse.accessToken
@@ -216,6 +221,8 @@ var tenantUrl = "https://dtecho365.onmicrosoft.com";
             console.log(error);
         } else {
             if (response.tokenType === "access_token") {
+                localStorage.setItem("accessTokenFromADCB", tokenResponse.accessToken);
+
                 callMSGraph(graphConfig.graphMeEndpoint, response.accessToken, graphAPICallback);
             } else {
                 console.log("token type is:" + response.tokenType);
